@@ -1,0 +1,63 @@
+#imports
+include ~/.config/i3/win-mgm-keys.conf
+include ~/.config/i3/workspaces.conf
+include ~/.config/i3/apps.conf
+include ~/.config/i3/colors.conf
+
+# general
+set $mod Mod4
+floating_modifier $mod
+tiling_drag modifier titlebar
+font pango:monospace 8
+gaps inner 10
+default_border pixel 3
+bindsym $mod+mod2+KP_Add gaps inner current plus 5
+bindsym $mod+mod2+KP_Subtract gaps inner current minus 5
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# autostart
+exec --no-startup-id dex --autostart --environment i3
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec ~/.screenlayout/display.sh
+exec_always --no-startup-id nitrogen --restore
+exec_always --no-startup-id picom -f
+exec_always xsetroot -cursor_name left_ptr
+exec_always ~/.config/polybar/launch.sh
+exec --no-startup-id nm-applet &
+exec --no-startup-id optimus-manager-qt &
+exec --no-startup-id blueberry &
+#exec discord
+#exec whatsdesk
+#exec caprine
+
+#system
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+# monitors variables
+set $mon_laptop "eDP-1"
+set $mon_samsung "HDMI-1-0"
+set $mon_philips "DP-1-0"
+
+# workspaces variables
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+set $ws11 "11"
+set $ws12 "12"
+set $ws13 "13"
+set $ws14 "14"
+set $ws15 "15"
+
